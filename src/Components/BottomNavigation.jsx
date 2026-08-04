@@ -1,10 +1,5 @@
+import { FaGift, FaHome, FaUser, FaWallet } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
-import {
-  FaHome,
-  FaWallet,
-  FaGift,
-  FaUser,
-} from "react-icons/fa";
 
 import { HiDocumentCheck } from "react-icons/hi2";
 
@@ -45,7 +40,7 @@ const BottomNavigation = () => {
       left-1/2
       -translate-x-1/2
       w-full
-      max-w-sm
+      max-w-4xl
       bg-[#121E35]
       border-t
       border-[#243B61]
@@ -61,9 +56,7 @@ const BottomNavigation = () => {
           to={item.path}
           className={({ isActive }) =>
             `flex flex-col items-center text-xs transition-all duration-300 ${
-              isActive
-                ? "text-[#F6D365]"
-                : "text-gray-400 hover:text-white"
+              isActive ? "text-[#F6D365]" : "text-gray-400 hover:text-white"
             }`
           }
         >
