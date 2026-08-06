@@ -1,71 +1,126 @@
-import React, { useState } from 'react';
-import { 
-  FaHome, 
-  FaShieldAlt, 
-  FaWallet, 
-  FaLayerGroup, 
-  FaUser 
-} from 'react-icons/fa';
+import { FaBell, FaArrowLeft } from "react-icons/fa";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const MobileNavbar = () => {
-  // State to track which tab is currently active (default is 'Home')
-  const [activeTab, setActiveTab] = useState('Home');
+  const location = useLocation();
+  const navigate = useNavigate(); // For back button navigation
 
-  const navItems = [
-    { name: 'Home', icon: <FaHome size={22} /> },
-    { name: 'KYC', icon: <FaShieldAlt size={22} /> },
-    { name: 'Wallet', icon: <FaWallet size={22} /> },
-    { name: 'Promos', icon: <FaLayerGroup size={22} /> },
-    { name: 'Profile', icon: <FaUser size={22} /> },
+  let title = "";
+
+  // Cleaned up duplicate cases
+  switch (location.pathname) {
+    case "/home":
+      title = "Marin Club";
+      break;
+    case "/kyc":
+      title = "KYC Verification";
+      break;
+    case "/wallet":
+      title = "My Wallet";
+      break;
+    case "/promos":
+      title = "Promos";
+      break;
+    case "/profile":
+      title = "Profile";
+      break;
+    case "/investment":
+      title = "Investment Summary";
+      break;
+    case "/allinvestment":
+      title = "All Investments";
+      break;
+    case "/transaction":
+      title = "All Transaction";
+      break;
+    case "/withdraw":
+      title = "Withdraw History";
+      break;
+    case "/platformguide":
+      title = "Platform Guide";
+      break;
+    case "/helpcenter":
+      title = "Help Center";
+      break;
+    case "/termcondition":
+      title = "Terms & Conditions";
+      break;
+    case "/turnover":
+      title = "TurnOver";
+      break;
+    case "/subordinate":
+      title = "Sub-ordinate";
+      break;
+    case "/categories":
+      title = "Categories";
+      break;
+    case "/smartgrowth":
+      title = "Smart Growth";
+      break;
+    default:
+      title = "Marin Club";
+  }
+
+  // List of pages where the Back Arrow should appear instead of the Logo
+  const backArrowPaths = [
+    "/wallet", "/promos", "/profile", "/investment", "/allinvestment",
+    "/transaction", "/withdraw", "/platformguide","/categories","/smartgrowth",
+    "/helpcenter", "/termcondition", "/turnover", "/subordinate"
   ];
 
+  const showBackArrow = backArrowPaths.includes(location.pathname);
+
   return (
-    <>
-      {/* 
-        This spacer div is extremely important! 
-        Because the navbar is fixed at the bottom, it floats over your content.
-        This div pushes your main page content up so it doesn't get hidden behind the navbar.
-      */}
-      <div className="h-20 w-full md:hidden"></div>
+    <header className="sticky top-0 z-50 bg-dark-800/90 backdrop-blur-md border-b border-accent-purple/20 before:absolute before:inset-x-4 before:top-0 before:h-[1px] before:bg-gradient-to-r before:from-transparent before:via-accent-purple/60 before:to-transparent">
 
-      <nav className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-[#13162b] border-t border-[#2a2e4a] px-4 py-2 pb-safe shadow-2xl">
-        <div className="flex justify-between items-center max-w-md mx-auto">
-          {navItems.map((item) => {
-            const isActive = activeTab === item.name;
-            return (
+      <div className="flex items-center justify-between h-16 px-4 relative">
+
+        {/* Left Section: Logo or Back Arrow */}
+        <div className="flex items-center gap-3">
+
+          {showBackArrow ? (
+            // --- BACK ARROW VIEW ---
+            <>
               <button
-                key={item.name}
-                onClick={() => setActiveTab(item.name)}
-                className="flex flex-col items-center gap-1 py-1 px-2 relative w-full transition-all duration-200"
+                onClick={() => navigate(-1)}
+                className="w-10 h-10 rounded-full bg-dark-700 border border-border-glass flex items-center justify-center text-white hover:bg-dark-600 transition-all duration-200 hover:scale-105"
               >
-                {/* Icon */}
-                <div 
-                  className={`transition-colors duration-200 ${
-                    isActive ? 'text-[#cafc03]' : 'text-[#6b7094]'
-                  }`}
-                >
-                  {item.icon}
-                </div>
-
-                {/* Label */}
-                <span 
-                  className={`text-[11px] font-medium transition-colors duration-200 ${
-                    isActive ? 'text-[#cafc03]' : 'text-[#6b7094]'
-                  }`}
-                >
-                  {item.name}
-                </span>
-
-                {/* Active Underline Indicator */}
-                {isActive && (
-                  <div className="absolute -bottom-2 w-6 h-[3px] bg-[#cafc03] rounded-full shadow-[0_0_8px_rgba(202,252,3,0.6)]"></div>
-                )}
+                <FaArrowLeft size={18} />
               </button>
-            );
-          })}
+              <h2 className="text-lg font-bold text-white tracking-wide">
+                {title}
+              </h2>
+            </>
+          ) : (
+            // --- LOGO VIEW (Home page) ---
+            <>
+              {/* Premium Image Container with Purple/Pink Glow */}
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-accent-purple/20 to-accent-pink/20 border border-accent-purple/30 shadow-accent-purple/20 flex items-center justify-center overflow-hidden group-hover:shadow-accent-purple/30 transition-all duration-300">
+                <img
+                  src="/logo.png"
+                  alt="Marin Club"
+                  className="w-6 h-6 object-contain drop-shadow-[0_0_5px_rgba(255,255,255,0.2)]"
+                />
+              </div>
+
+              {/* Text Logo with Gradient */}
+              <h2 className="text-lg font-bold tracking-wide bg-gradient-to-r from-accent-purple to-accent-pink bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(168,85,247,0.3)]">
+                {title}
+              </h2>
+            </>
+          )}
         </div>
-      </nav>
-    </>
+
+        {/* Right Section: Notification Bell (Unchanged) */}
+        <button className="relative group w-10 h-10 rounded-full bg-accent-purple/10 backdrop-blur-sm border border-accent-purple/20 flex items-center justify-center hover:bg-accent-purple/20 hover:border-accent-purple/40 transition-all duration-300 hover:scale-105 hover:shadow-accent-purple/20">
+          <FaBell className="text-accent-purple/80 group-hover:text-white transition-colors duration-300 text-sm" />
+
+          {/* Notification Dot */}
+          <span className="absolute top-1.5 right-1.5 w-2.5 h-2.5 rounded-full bg-gradient-to-r from-accent-pink to-accent-purple shadow-accent-pink/60 animate-pulse"></span>
+        </button>
+
+      </div>
+    </header>
   );
 };
 

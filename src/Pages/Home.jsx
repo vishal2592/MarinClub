@@ -5,6 +5,7 @@ import WhyChooseUs from '../Components/WhyChooseUs'
 import InvestmentPlan from '../Components/InvestmentPlan'
 import Testimonial from '../Components/Testimonial'
 import Navbar from '../Components/Navbar'
+import Footer from '../Components/Footer'
 
 const Home = () => {
   return (
@@ -15,6 +16,7 @@ const Home = () => {
         <WhyChooseUs />
         <InvestmentPlan />
         <Testimonial />
+        <Footer />
     </div>
   )
 }

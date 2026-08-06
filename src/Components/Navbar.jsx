@@ -11,6 +11,7 @@ import {
   FaSignOutAlt,
   FaChevronDown
 } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -73,10 +74,12 @@ const Navbar = () => {
             border-t lg:border-t-0 border-white/10
           `}>
             {/* Start Investing Button */}
-            <span className="flex-1 lg:flex-none flex items-center justify-center gap-2 bg-gradient-to-r from-purple-500 to-pink-500 px-5 py-2 rounded-full font-semibold text-sm text-white shadow-lg shadow-purple-500/20 hover:shadow-purple-500/40 hover:-translate-y-0.5 transition-all duration-300 cursor-default">
+          <Link to='/home'>
+              <span className="flex-1 lg:flex-none flex items-center justify-center gap-2 bg-gradient-to-r from-purple-500 to-pink-500 px-5 py-2 rounded-full font-semibold text-sm text-white shadow-lg shadow-purple-500/20 hover:shadow-purple-500/40 hover:-translate-y-0.5 transition-all duration-300 cursor-default">
               <FaRocket className="text-white/90" /> 
               Start Investing
             </span>
+          </Link>
             
             {/* User Button with Dropdown */}
             <div className="relative">
