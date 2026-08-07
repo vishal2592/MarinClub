@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {
-  FaRocket,
   FaEnvelope,
   FaPhone,
   FaLocationDot,
@@ -14,6 +13,7 @@ import {
   FaClock,
   FaCoins
 } from 'react-icons/fa6';
+import image1 from '../assets/images/heading image.png'
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -21,7 +21,8 @@ const Footer = () => {
   const quickLinks = [
     { name: 'About Us', icon: <FaCoins />, path: '/notfound' },
     { name: 'Investment Plans', icon: <FaClock />, path: '/notfound' },
-    { name: 'Referral Program', icon: <FaRocket />, path: '/notfound' },
+    // ✅ REPLACED FaRocket WITH image1
+    { name: 'Referral Program', icon: <img src={image1} className="w-5 h-5 object-contain rounded-full" />, path: '/notfound' },
     { name: 'Blog', icon: <FaShieldHalved />, path: '/notfound' },
     { name: 'Carrers', icon: <FaShieldHalved />, path: '/notfound' },
   ];
@@ -68,7 +69,14 @@ const Footer = () => {
           <div className="flex flex-col gap-6">
             <div className="flex items-center gap-2">
               <div className="flex items-center gap-2">
-                <FaRocket className="text-accent-gold text-2xl" />
+                
+                {/* ✅ Logo Image */}
+                <img
+                  src={image1}
+                  alt="Marin Club"
+                  className="w-8 h-8 object-contain rounded-lg"
+                />
+
                 <span className="text-xl font-bold bg-gradient-to-r from-accent-purple to-accent-pink bg-clip-text text-transparent">
                   Marin Club
                 </span>

@@ -15,16 +15,15 @@ import {
 
 const Promos = () => {
   const [activeTab, setActiveTab] = useState('today');
-  const [isCopied, setIsCopied] = useState(false); // State for copy button
+  const [isCopied, setIsCopied] = useState(false);
 
-  const referralLink = "https://marinclub.site/regis..."; // Link to be copied
+  const referralLink = "https://marinclub.site/register?ref=USER123456"; 
 
-  // Copy to Clipboard Handler
   const handleCopyLink = async () => {
     try {
       await navigator.clipboard.writeText(referralLink);
-      setIsCopied(true); // Change text to "Copied!"
-      setTimeout(() => setIsCopied(false), 2000); // Revert back after 2 seconds
+      setIsCopied(true);
+      setTimeout(() => setIsCopied(false), 2000);
     } catch (err) {
       console.error('Failed to copy text: ', err);
       alert('Failed to copy link. Please copy it manually.');
@@ -35,8 +34,8 @@ const Promos = () => {
     <MainLayout>
       <div className="w-full flex flex-col gap-5 text-white pt-4 pb-6 px-2">
         
-        {/* --- Header Card: Total Commission --- */}
-        <div className="relative bg-gradient-to-r from-accent-pink to-accent-cyan rounded-2xl p-6 overflow-hidden">
+        {/* --- Header Card: Total Commission (UPDATED TO PURPLE/PINK) --- */}
+        <div className="relative bg-gradient-to-r from-accent-purple to-accent-pink rounded-2xl p-6 overflow-hidden">
           <div className="absolute right-4 top-4 w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white/80">
             <FaBullseye size={16} />
           </div>
@@ -69,10 +68,9 @@ const Promos = () => {
               className="w-full bg-transparent text-xs text-white font-mono focus:outline-none"
             />
             
-            {/* Updated Copy Button with Functionality */}
             <button 
               onClick={handleCopyLink}
-              className="flex items-center gap-1.5 bg-accent-lime text-dark-900 px-4 py-1.5 rounded-lg text-[11px] font-bold hover:bg-accent-lime/80 transition-colors min-w-[70px] justify-center"
+              className="flex items-center gap-1.5 bg-gradient-to-r from-accent-purple to-accent-pink hover:from-accent-pink hover:to-accent-purple text-white px-4 py-1.5 rounded-lg text-[11px] font-bold transition-colors min-w-[70px] justify-center shadow-md shadow-accent-purple/20"
             >
               <FaCopy size={12} /> {isCopied ? 'Copied!' : 'Copy'}
             </button>
@@ -85,7 +83,7 @@ const Promos = () => {
             onClick={() => setActiveTab('today')}
             className={`flex-1 py-2.5 rounded-xl text-xs font-bold transition-all duration-300 ${
               activeTab === 'today' 
-                ? 'bg-accent-lime text-dark-900 shadow-md' 
+                ? 'bg-gradient-to-r from-accent-purple to-accent-pink text-white shadow-md shadow-accent-purple/20' 
                 : 'text-dark-muted hover:text-white'
             }`}
           >
@@ -95,7 +93,7 @@ const Promos = () => {
             onClick={() => setActiveTab('total')}
             className={`flex-1 py-2.5 rounded-xl text-xs font-bold transition-all duration-300 ${
               activeTab === 'total' 
-                ? 'bg-accent-lime text-dark-900 shadow-md' 
+                ? 'bg-gradient-to-r from-accent-purple to-accent-pink text-white shadow-md shadow-accent-purple/20' 
                 : 'text-dark-muted hover:text-white'
             }`}
           >
@@ -103,7 +101,7 @@ const Promos = () => {
           </button>
         </div>
 
-        {/* --- Stats Row (Depends on activeTab) --- */}
+        {/* --- Stats Row --- */}
         <div className="grid grid-cols-2 gap-4">
           <div className="bg-dark-600 border border-border-glass rounded-2xl p-4 text-center flex flex-col items-center justify-center gap-1">
             <p className="text-[10px] text-dark-muted font-medium">Today's Earning</p>
@@ -111,30 +109,29 @@ const Promos = () => {
           </div>
           <div className="bg-dark-600 border border-border-glass rounded-2xl p-4 text-center flex flex-col items-center justify-center gap-1">
             <p className="text-[10px] text-dark-muted font-medium">New Registrations</p>
-            <p className="text-accent-lime text-xl font-bold">0</p>
+            <p className="text-accent-cyan text-xl font-bold">0</p>
           </div>
         </div>
 
-        {/* --- Refer & Earn Banner --- */}
-        <div className="bg-gradient-to-r from-accent-lime to-accent-gold/50 rounded-2xl p-5 overflow-hidden relative">
-          <h3 className="text-lg font-bold text-dark-900 mb-1">Refer & Earn</h3>
-          <p className="text-xs text-dark-900/70 font-medium">Earn 50% bonus on deposits</p>
+        {/* --- Refer & Earn Banner (UPDATED TO PURPLE/PINK) --- */}
+        <div className="bg-gradient-to-r from-accent-purple to-accent-pink rounded-2xl p-5 overflow-hidden relative">
+          <h3 className="text-lg font-bold text-white mb-1">Refer & Earn</h3>
+          <p className="text-xs text-white/70 font-medium">Earn 50% bonus on deposits</p>
           
           <button className="mt-4 flex items-center gap-2 bg-dark-900 text-white border border-white/20 px-5 py-2 rounded-full text-[11px] font-bold shadow-lg hover:bg-dark-800 transition-colors">
-            <FaCopy size={12} className="text-accent-lime" /> Copy Link
+            <FaCopy size={12} className="text-accent-pink" /> Copy Link
           </button>
         </div>
 
         {/* --- Clickable Navigation Cards --- */}
         <div className="flex flex-col gap-3">
-          {/* Turnover History -> /turnover */}
           <Link 
             to="/turnover" 
             className="bg-dark-600 border border-border-glass rounded-2xl p-5 flex items-center justify-between hover:bg-dark-700 hover:border-accent-purple/40 transition-all duration-300 cursor-pointer group"
           >
             <div className="flex flex-col gap-1">
               <div className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-accent-lime"></span>
+                <span className="w-1.5 h-1.5 rounded-full bg-accent-gold"></span>
                 <h4 className="text-sm font-semibold text-white">Turnover History</h4>
               </div>
               <p className="text-[10px] text-dark-muted">Day-wise collection</p>
@@ -144,14 +141,13 @@ const Promos = () => {
             </div>
           </Link>
 
-          {/* Subordinate Data -> /subordinate */}
           <Link 
             to="/subordinate" 
             className="bg-dark-600 border border-border-glass rounded-2xl p-5 flex items-center justify-between hover:bg-dark-700 hover:border-accent-purple/40 transition-all duration-300 cursor-pointer group"
           >
             <div className="flex flex-col gap-1">
               <div className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-accent-lime"></span>
+                <span className="w-1.5 h-1.5 rounded-full bg-accent-gold"></span>
                 <h4 className="text-sm font-semibold text-white">Subordinate Data</h4>
               </div>
               <p className="text-[10px] text-dark-muted">View team list</p>
@@ -164,7 +160,6 @@ const Promos = () => {
 
         {/* --- Referral & Bonus Rules --- */}
         <div className="bg-dark-600 border border-border-glass rounded-2xl p-5 relative overflow-hidden">
-          {/* Background subtle icon */}
           <div className="absolute -bottom-6 -right-6 text-white/5">
             <FaStar size={80} />
           </div>

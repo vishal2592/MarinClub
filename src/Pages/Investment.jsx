@@ -15,8 +15,9 @@ const Investment = () => {
   const topStats = [
     { label: 'Total Invested', value: '₹0', icon: FaChartArea, iconColor: 'text-accent-cyan', textColor: 'text-white' },
     { label: 'Total Expected Returns', value: '₹0', icon: FaIndianRupeeSign, iconColor: 'text-accent-gold', textColor: 'text-white' },
-    { label: 'Profit Earned', value: '+₹0', icon: FaArrowTrendUp, iconColor: 'text-accent-pink', textColor: 'text-accent-lime' },
-    { label: 'Actual ROI', value: '+0.8%', icon: FaPercent, iconColor: 'text-accent-purple', textColor: 'text-accent-lime' },
+    // Changed textColor from lime to cyan & gold
+    { label: 'Profit Earned', value: '+₹0', icon: FaArrowTrendUp, iconColor: 'text-accent-pink', textColor: 'text-accent-cyan' },
+    { label: 'Actual ROI', value: '+0.8%', icon: FaPercent, iconColor: 'text-accent-purple', textColor: 'text-accent-gold' },
   ];
 
   const bottomStats = [

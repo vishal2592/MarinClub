@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { 
-  FaChartPie, 
   FaBolt, 
   FaBars, 
   FaTimes, 
@@ -10,8 +9,9 @@ import {
   FaTachometerAlt,
   FaSignOutAlt,
   FaChevronDown
-} from 'react-icons/fa';
+} from 'react-icons/fa'; // FaChartPie removed
 import { Link } from 'react-router-dom';
+import image1 from '../assets/images/heading image.png'
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -33,13 +33,22 @@ const Navbar = () => {
       {/* Glass effect overlay - clean and minimal */}
       <div className="absolute inset-0 backdrop-blur-xl bg-white/[0.03] border-b border-white/5"></div>
       
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
         <div className="flex items-center justify-between flex-wrap">
           {/* Brand / Logo - Marin Club */}
           <a href="#" className="flex items-center gap-3 no-underline group">
             <div className="relative">
-              <div className="relative bg-gradient-to-br from-purple-500/20 to-pink-500/20 w-12 h-12 rounded-xl flex items-center justify-center border border-white/10 backdrop-blur-sm group-hover:border-purple-400/30 transition-all duration-500">
-                <FaChartPie className="text-white text-xl group-hover:text-purple-400 transition-colors duration-500" />
+              {/* 
+                 UPDATED: Icon replaced with image1.
+                 overflow-hidden ensures the image respects the rounded-xl corners.
+                 w-full h-full object-cover fills the container perfectly.
+              */}
+              <div className="relative bg-gradient-to-br from-purple-500/20 to-pink-500/20 w-12 h-12 rounded-xl flex items-center justify-center border border-white/10 backdrop-blur-sm group-hover:border-purple-400/30 transition-all duration-500 overflow-hidden">
+                <img 
+                  src={image1} 
+                  alt="Marin Club" 
+                  className="w-full h-full object-cover" 
+                />
               </div>
             </div>
             <div className="flex flex-col">
@@ -110,14 +119,14 @@ const Navbar = () => {
 
                   {/* Menu Items */}
                   <div className="py-1">
-                    <a href="#" className="flex items-center gap-3 px-4 py-2.5 text-sm text-white/70 hover:text-white hover:bg-white/5 transition-colors duration-200">
+                    <Link to='/profile' className="flex items-center gap-3 px-4 py-2.5 text-sm text-white/70 hover:text-white hover:bg-white/5 transition-colors duration-200">
                       <FaUserCircle className="text-purple-400 text-sm" />
                       Profile
-                    </a>
-                    <a href="#" className="flex items-center gap-3 px-4 py-2.5 text-sm text-white/70 hover:text-white hover:bg-white/5 transition-colors duration-200">
+                    </Link>
+                    <Link to='/notfound' className="flex items-center gap-3 px-4 py-2.5 text-sm text-white/70 hover:text-white hover:bg-white/5 transition-colors duration-200">
                       <FaTachometerAlt className="text-purple-400 text-sm" />
                       Dashboard
-                    </a>
+                    </Link>
                     <div className="border-t border-white/5 my-1"></div>
                     <a href="#" className="flex items-center gap-3 px-4 py-2.5 text-sm text-red-400 hover:text-red-300 hover:bg-white/5 transition-colors duration-200">
                       <FaSignOutAlt className="text-red-400 text-sm" />

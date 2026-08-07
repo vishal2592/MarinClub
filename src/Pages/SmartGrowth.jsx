@@ -10,6 +10,7 @@ import {
   FaCoins,
   FaGift
 } from 'react-icons/fa6';
+import { Link } from 'react-router-dom';
 
 const SmartGrowth = () => {
   return (
@@ -36,44 +37,54 @@ const SmartGrowth = () => {
               <p className="text-xl font-bold text-white tracking-tight">₹100</p>
             </div>
           </div>
-          <button className="relative z-10 bg-accent-gold hover:bg-accent-gold/80 text-dark-900 px-5 py-2 rounded-full font-bold text-xs shadow-lg shadow-accent-gold/20 hover:shadow-accent-gold/40 transition-all duration-300 hover:scale-105">
+          <Link to='/deposite'>
+              <button className="relative z-10 bg-gradient-to-r from-accent-purple to-accent-pink text-white px-5 py-2 rounded-full font-bold text-xs shadow-lg shadow-accent-gold/20 hover:shadow-accent-gold/40 transition-all duration-300 hover:scale-105">
             + Deposit
           </button>
+          </Link>
         </div>
 
         {/* --- 4 Stats Grid --- */}
         <div className="grid grid-cols-2 gap-3">
-          <div className="bg-dark-600 border border-border-glass rounded-2xl p-4 flex flex-col gap-2 hover:bg-dark-700 hover:border-accent-purple/30 transition-all duration-200">
+          <Link to='/investment'>
+            <div className="bg-dark-600 border border-border-glass rounded-2xl p-4 flex flex-col gap-2 hover:bg-dark-700 hover:border-accent-purple/30 transition-all duration-200">
             <div className="flex items-center justify-between">
               <p className="text-[9px] text-dark-muted font-bold tracking-wider uppercase">Total Invested Amount</p>
               <FaChartLine className="text-accent-cyan text-sm" />
             </div>
             <p className="text-lg font-bold text-white">₹0</p>
           </div>
+          </Link>
 
-          <div className="bg-dark-600 border border-border-glass rounded-2xl p-4 flex flex-col gap-2 hover:bg-dark-700 hover:border-accent-gold/30 transition-all duration-200">
+          <Link to='/investment'>
+            <div className="bg-dark-600 border border-border-glass rounded-2xl p-4 flex flex-col gap-2 hover:bg-dark-700 hover:border-accent-gold/30 transition-all duration-200">
             <div className="flex items-center justify-between">
               <p className="text-[9px] text-dark-muted font-bold tracking-wider uppercase">Total Amount (Invest + Profit)</p>
               <FaArrowTrendUp className="text-accent-gold text-sm" />
             </div>
             <p className="text-lg font-bold text-white">₹0</p>
           </div>
+          </Link>
 
-          <div className="bg-dark-600 border border-border-glass rounded-2xl p-4 flex flex-col gap-2 hover:bg-dark-700 hover:border-accent-pink/30 transition-all duration-200">
+          <Link to='/allinvestment'>
+            <div className="bg-dark-600 border border-border-glass rounded-2xl p-4 flex flex-col gap-2 hover:bg-dark-700 hover:border-accent-pink/30 transition-all duration-200">
             <div className="flex items-center justify-between">
               <p className="text-[9px] text-dark-muted font-bold tracking-wider uppercase">Active Plans</p>
               <FaCirclePlus className="text-accent-pink text-sm" />
             </div>
             <p className="text-lg font-bold text-white">0</p>
           </div>
+          </Link>
 
-          <div className="bg-dark-600 border border-border-glass rounded-2xl p-4 flex flex-col gap-2 hover:bg-dark-700 hover:border-accent-cyan/30 transition-all duration-200">
+         <Link to='/allinvestment'>
+           <div className="bg-dark-600 border border-border-glass rounded-2xl p-4 flex flex-col gap-2 hover:bg-dark-700 hover:border-accent-cyan/30 transition-all duration-200">
             <div className="flex items-center justify-between">
               <p className="text-[9px] text-dark-muted font-bold tracking-wider uppercase">Completed Plans</p>
               <FaCircleCheck className="text-accent-cyan text-sm" />
             </div>
             <p className="text-lg font-bold text-white">0</p>
           </div>
+         </Link>
         </div>
 
         {/* --- Live Ticker Bar --- */}

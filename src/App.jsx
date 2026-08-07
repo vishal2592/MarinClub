@@ -22,6 +22,9 @@ import Categories from "./Pages/Categories";
 import SmartGrowth from "./Pages/SmartGrowth";
 import Register from "./Pages/Register";
 import Login from "./Pages/Login";
+import Deposite from "./Pages/Deposit";
+import Withdraw from "./Pages/Withdraw";
+import QuickReturn from "./Pages/QuickReturn";
 
 function App() {
   return (
@@ -50,6 +53,9 @@ function App() {
         <Route path="/smartgrowth" element={<SmartGrowth />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path='/deposite' element={<Deposite />} />
+        <Route path="/draw" element={<Withdraw />} />
+        <Route path="/quickreturn" element={<QuickReturn />} />
       
     </Routes>
   );

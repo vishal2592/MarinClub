@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import MainLayout from '../layout/MainLayout';
-import { 
-  FaPlay, 
-  FaUser, 
-  FaShieldHalved, 
-  FaWallet, 
-  FaChartPie, 
-  FaArrowTrendUp, 
-  FaUsers, 
-  FaChevronRight, 
-  FaHeadset, 
+import {
+  FaPlay,
+  FaUser,
+  FaShieldHalved,
+  FaWallet,
+  FaChartPie,
+  FaArrowTrendUp,
+  FaUsers,
+  FaChevronRight,
+  FaHeadset,
   FaCircleQuestion
 } from 'react-icons/fa6';
 
@@ -26,7 +26,7 @@ const PlatformGuide = () => {
   const quickLinks = [
     { label: 'KYC', path: '/kyc', icon: FaShieldHalved },
     { label: 'Wallet', path: '/wallet', icon: FaWallet },
-    { label: 'Investments', path: '/investments', icon: FaChartPie },
+    { label: 'Investments', path: '/investment', icon: FaChartPie },
     { label: 'Referral', path: '/promos', icon: FaUsers },
   ];
 
@@ -44,7 +44,7 @@ const PlatformGuide = () => {
   return (
     <MainLayout>
       <div className="w-full flex flex-col gap-6 text-white pt-4 pb-6 px-4">
-        
+
         {/* --- Top Hero Banner --- */}
         <div className="relative bg-gradient-to-r from-accent-purple to-accent-pink rounded-2xl p-8 flex flex-col items-center justify-center overflow-hidden shadow-lg shadow-accent-purple/20">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-white/5 rounded-full blur-2xl pointer-events-none"></div>
@@ -62,8 +62,8 @@ const PlatformGuide = () => {
           {steps.map((step) => {
             const Icon = step.icon;
             return (
-              <div 
-                key={step.id} 
+              <div
+                key={step.id}
                 className="relative flex gap-4 pl-4 py-2"
               >
                 {/* Step Icon */}
@@ -90,9 +90,9 @@ const PlatformGuide = () => {
             {quickLinks.map((link) => {
               const Icon = link.icon;
               return (
-                <Link 
-                  key={link.label} 
-                  to={link.path} 
+                <Link
+                  key={link.label}
+                  to={link.path}
                   className="bg-dark-600 border border-border-glass rounded-2xl py-4 px-4 flex items-center justify-between gap-2 hover:bg-dark-700 hover:border-accent-purple/30 transition-all duration-300 group"
                 >
                   <div className="flex items-center gap-2">
@@ -113,8 +113,8 @@ const PlatformGuide = () => {
           </h3>
           <div className="bg-dark-600 border border-border-glass rounded-2xl overflow-hidden divide-y divide-border-glass">
             {faqData.map((faq, index) => (
-              <div 
-                key={index} 
+              <div
+                key={index}
                 className="cursor-pointer hover:bg-dark-700 transition-colors duration-200"
                 onClick={() => setOpenIndex(openIndex === index ? -1 : index)}
               >
@@ -149,12 +149,16 @@ const PlatformGuide = () => {
 
           {/* Bottom: Buttons Section (Side-by-Side) */}
           <div className="flex flex-row items-center justify-center gap-3 relative z-10 w-full max-w-xs sm:max-w-full">
-            <button className="flex-1 px-5 py-2.5 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-accent-purple to-accent-pink hover:from-accent-pink hover:to-accent-purple shadow-lg shadow-accent-purple/20 transition-all duration-300 hover:-translate-y-0.5">
-              Contact Support
-            </button>
-            <button className="flex-1 px-5 py-2.5 rounded-xl text-xs font-bold text-dark-muted bg-transparent border border-border-glass hover:text-white hover:border-accent-cyan/40 transition-all duration-300">
-              Help Center
-            </button>
+            <Link to='/helpcenter'>
+              <button className="flex-1 px-5 py-2.5 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-accent-purple to-accent-pink hover:from-accent-pink hover:to-accent-purple shadow-lg shadow-accent-purple/20 transition-all duration-300 hover:-translate-y-0.5">
+                Contact Support
+              </button>
+            </Link>
+            <Link to='/helpcenter'>
+              <button className="flex-1 px-5 py-2.5 rounded-xl text-xs font-bold text-dark-muted bg-transparent border border-border-glass hover:text-white hover:border-accent-cyan/40 transition-all duration-300">
+                Help Center
+              </button>
+            </Link>
           </div>
         </div>
 

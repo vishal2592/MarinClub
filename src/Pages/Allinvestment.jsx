@@ -33,7 +33,7 @@ const Allinvestment = () => {
           ))}
         </div>
 
-        {/* --- Filter Tabs --- */}
+        {/* --- Filter Tabs (Updated Gradient) --- */}
         <div className="flex items-center gap-3 w-full">
           {tabs.map((tab) => {
             const isActive = activeTab === tab;
@@ -43,7 +43,7 @@ const Allinvestment = () => {
                 onClick={() => setActiveTab(tab)}
                 className={`flex-1 py-2.5 rounded-xl text-xs font-bold transition-all duration-300 ${
                   isActive
-                    ? 'bg-accent-lime text-dark-900 shadow-lg shadow-accent-lime/20 hover:shadow-accent-lime/40 hover:scale-105'
+                    ? 'bg-gradient-to-r from-accent-purple to-accent-pink text-white shadow-lg shadow-accent-purple/20 hover:shadow-accent-purple/40 hover:scale-105'
                     : 'bg-dark-700 border border-border-glass text-dark-muted hover:text-white hover:border-accent-purple/30 hover:bg-dark-600'
                 }`}
               >

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react'; // Added useState
 import MainLayout from '../layout/MainLayout';
 import { 
   FaUsers, 
@@ -7,6 +7,9 @@ import {
 } from 'react-icons/fa6';
 
 const Turnover = () => {
+  // State to handle active period
+  const [period, setPeriod] = useState('week'); // 'week' or 'month'
+
   return (
     <MainLayout>
       <div className="w-full flex flex-col gap-5 text-white pt-4 pb-6 px-4">
@@ -26,17 +29,31 @@ const Turnover = () => {
               ₹0
             </h2>
             <p className="text-[10px] text-white/70 mt-1 font-medium">
-              From 0 referral deposits this week
+              From 0 referral deposits this {period}
             </p>
           </div>
         </div>
 
-        {/* --- Tabs (This Week / This Month) --- */}
+        {/* --- Tabs (This Week / This Month) Now Interactive --- */}
         <div className="flex items-center gap-3 w-full">
-          <button className="flex-1 py-3 rounded-xl bg-accent-cyan text-dark-900 text-xs font-bold shadow-lg shadow-accent-cyan/20 transition-all duration-300">
+          <button 
+            onClick={() => setPeriod('week')}
+            className={`flex-1 py-3 rounded-xl text-xs font-bold transition-all duration-300 ${
+              period === 'week' 
+                ? 'bg-accent-cyan text-dark-900 shadow-lg shadow-accent-cyan/20' 
+                : 'bg-dark-700 border border-border-glass text-dark-muted hover:text-white hover:border-accent-purple/40'
+            }`}
+          >
             This Week
           </button>
-          <button className="flex-1 py-3 rounded-xl bg-dark-700 border border-border-glass text-dark-muted text-xs font-bold transition-all duration-300 hover:text-white hover:border-accent-purple/40">
+          <button 
+            onClick={() => setPeriod('month')}
+            className={`flex-1 py-3 rounded-xl text-xs font-bold transition-all duration-300 ${
+              period === 'month' 
+                ? 'bg-accent-cyan text-dark-900 shadow-lg shadow-accent-cyan/20' 
+                : 'bg-dark-700 border border-border-glass text-dark-muted hover:text-white hover:border-accent-purple/40'
+            }`}
+          >
             This Month
           </button>
         </div>

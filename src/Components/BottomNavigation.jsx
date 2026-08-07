@@ -1,33 +1,39 @@
-import { FaGift, FaHome, FaUser, FaWallet } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
-import { HiDocumentCheck } from "react-icons/hi2";
+// SWITCHED TO HEROICONS 2 FOR 100% STABLE OUTLINE ICONS
+import { 
+  HiOutlineHome, 
+  HiOutlineUser, 
+  HiOutlineGift, 
+  HiOutlineDocumentCheck,
+  HiOutlineCreditCard // The perfect outline Wallet icon
+} from "react-icons/hi2";
 
-// YOUR EXACT MENU - UNCHANGED
+// YOUR EXACT MENU - UNCHANGED (Icons replaced with bulletproof outline versions)
 const menu = [
   {
     title: "Home",
     path: "/home",
-    icon: <FaHome size={22} />,
+    icon: <HiOutlineHome size={22} />,
   },
   {
     title: "KYC",
     path: "/kyc",
-    icon: <HiDocumentCheck size={22} />,
+    icon: <HiOutlineDocumentCheck size={22} />,
   },
   {
     title: "Wallet",
     path: "/wallet",
-    icon: <FaWallet size={22} />,
+    icon: <HiOutlineCreditCard size={22} />,
   },
   {
     title: "Promos",
     path: "/promos",
-    icon: <FaGift size={22} />,
+    icon: <HiOutlineGift size={22} />,
   },
   {
     title: "Profile",
     path: "/profile",
-    icon: <FaUser size={22} />,
+    icon: <HiOutlineUser size={22} />,
   },
 ];
 

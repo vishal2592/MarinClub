@@ -3,6 +3,8 @@ import MainLayout from "../Layout/MainLayout";
 import {
   FaCoins, FaBolt, FaFire, FaLock, FaCrown, FaBell
 } from 'react-icons/fa6';
+import image1 from '../assets/images/smart Growth.jpg'
+import image2 from '../assets/images/quickreturn.jpg'
 
 const Dashboard = () => {
   const hotMoments = [
@@ -15,6 +17,20 @@ const Dashboard = () => {
 
   return (
     <MainLayout>
+      {/* CSS Keyframes for Auto Scrolling Ticker */}
+      <style>{`
+        @keyframes scrollTicker {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        .ticker-track {
+          animation: scrollTicker 25s linear infinite;
+        }
+        .ticker-track:hover {
+          animation-play-state: paused;
+        }
+      `}</style>
+
       <div className="w-full flex flex-col gap-5 text-white pb-6 pt-4 px-2">
 
         {/* --- Welcome Card --- */}
@@ -41,27 +57,37 @@ const Dashboard = () => {
                 <div className="w-1.5 h-4 bg-accent-purple/30 rounded-full"></div>
                 <div className="w-1.5 h-8 bg-accent-pink rounded-full shadow-accent-pink/50"></div>
               </div>
-              <button className="bg-gradient-to-r from-accent-purple to-accent-pink text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-accent-purple/30 hover:scale-105 transition-transform">
+              <Link to='/deposite'>
+                <button className="bg-gradient-to-r from-accent-purple to-accent-pink text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-accent-purple/30 hover:scale-105 transition-transform">
                 + Deposit
               </button>
+              </Link>
             </div>
           </div>
         </div>
 
-        {/* --- Ticker Bar --- */}
-        <div className="bg-dark-600 border border-border-glass rounded-xl px-4 py-2.5 flex items-center gap-6 overflow-x-auto whitespace-nowrap scrollbar-hide text-[11px] shrink-0">
-          <span className="flex items-center gap-2 text-dark-muted">
-            <span className="text-accent-purple text-xs"><FaBolt /></span>
-            <span className="text-white">Gupta</span> earned <span className="text-accent-pink font-medium">₹2,300</span> • 3m ago
-          </span>
-          <span className="w-px h-4 bg-accent-purple/20"></span>
-          <span className="flex items-center gap-2 text-dark-muted">
-            <span className="text-accent-purple text-xs"><FaBolt /></span>
-            <span className="text-white">Arjun</span> earned <span className="text-accent-pink font-medium">₹3,200</span> • 3m ago
-          </span>
+        {/* --- Movable Ticker Bar (Auto-Scroll) --- */}
+        <div className="bg-dark-600 border border-border-glass rounded-xl px-4 py-2.5 overflow-hidden text-[11px]">
+          <div className="ticker-track flex items-center gap-8 whitespace-nowrap w-max">
+            {/* Duplicate content for seamless infinite scroll */}
+            {[...Array(2)].map((_, i) => (
+              <div key={i} className="flex items-center gap-6 shrink-0">
+                <span className="flex items-center gap-2 text-dark-muted">
+                  <span className="text-accent-purple text-xs"><FaBolt /></span>
+                  <span className="text-white">Gupta</span> earned <span className="text-accent-pink font-medium">₹2,300</span> • 3m ago
+                </span>
+                <span className="w-px h-4 bg-accent-purple/20"></span>
+                <span className="flex items-center gap-2 text-dark-muted">
+                  <span className="text-accent-purple text-xs"><FaBolt /></span>
+                  <span className="text-white">Arjun</span> earned <span className="text-accent-pink font-medium">₹3,200</span> • 3m ago
+                </span>
+                <span className="w-px h-4 bg-accent-purple/20"></span>
+              </div>
+            ))}
+          </div>
         </div>
 
-        {/* --- Popular Investments --- */}
+        {/* --- Popular Investments (Optimized Images) --- */}
         <div className="shrink-0">
           <div className="flex justify-between items-center mb-3">
             <h3 className="text-sm font-bold flex items-center gap-2">
@@ -71,46 +97,72 @@ const Dashboard = () => {
             </Link>
           </div>
           <div className="grid grid-cols-2 gap-3">
-            <div className="bg-dark-600 border border-border-glass rounded-xl p-3.5 flex flex-col gap-3 relative overflow-hidden group hover:border-accent-purple/40 transition-colors">
-              <div className="absolute top-0 right-0 w-20 h-20 bg-accent-purple/10 rounded-full blur-xl pointer-events-none"></div>
-              <div className="flex items-center gap-2">
-                <div className="text-lg font-black tracking-tighter bg-gradient-to-r from-accent-purple to-accent-pink bg-clip-text text-transparent">SMART</div>
-                <div className="text-lg font-black tracking-tighter bg-gradient-to-r from-accent-pink to-accent-purple bg-clip-text text-transparent">GROWTH</div>
+
+            {/* Card 1: Smart Growth */}
+            <Link to='/smartgrowth'>
+              <div className="bg-dark-600 border border-border-glass rounded-xl overflow-hidden group hover:border-accent-purple/40 hover:-translate-y-1 transition-all duration-300 shadow-md shadow-accent-purple/5">
+                {/* Increased height & Removed opacity-80 for clarity */}
+                <div className="h-24 w-full bg-dark-800 overflow-hidden relative border-b border-border-glass">
+                  <img
+                    src={image1}
+                    alt="Smart Growth"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  {/* Overlay to ensure text remains readable */}
+                  {/* <div className="absolute inset-0 bg-gradient-to-t from-dark-600 via-dark-600/50 to-transparent"></div> */}
+                </div>
+                <div className="p-3.5 flex flex-col gap-1 relative z-10">
+                  <h4 className="text-[13px] font-bold text-white">Smart Growth</h4>
+                  <p className="text-[9px] text-dark-muted">Returns in 24 Hours</p>
+                  <p className="text-[9px] text-dark-muted">• 6 Plans available</p>
+                </div>
               </div>
-              <div>
-                <p className="text-[11px] font-semibold text-white">Smart Growth</p>
-                <p className="text-[9px] text-dark-muted">Returns in 24 Hours</p>
-                <p className="text-[9px] text-dark-muted">• 6 Plans available</p>
+
+            </Link>
+            {/* Card 2: Quick Return */}
+           <Link to='/quickreturn'>
+             <div className="bg-dark-600 border border-border-glass rounded-xl overflow-hidden group hover:border-accent-pink/40 hover:-translate-y-1 transition-all duration-300 shadow-md shadow-accent-pink/5">
+              {/* Increased height & Removed opacity-80 for clarity */}
+              <div className="h-24 w-full bg-dark-800 overflow-hidden relative border-b border-border-glass">
+                <img
+                  src={image2}
+                  alt="Quick Return"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                {/* Overlay to ensure text remains readable */}
+                {/* <div className="absolute inset-0 bg-gradient-to-t from-dark-600 via-dark-600/50 to-transparent"></div> */}
               </div>
-            </div>
-            <div className="bg-dark-600 border border-border-glass rounded-xl p-3.5 flex flex-col gap-3 relative overflow-hidden group hover:border-accent-purple/40 transition-colors">
-              <div className="absolute top-0 right-0 w-20 h-20 bg-accent-pink/10 rounded-full blur-xl pointer-events-none"></div>
-              <div className="flex items-center gap-2">
-                <div className="text-lg font-black tracking-tighter bg-gradient-to-r from-accent-purple to-accent-pink bg-clip-text text-transparent">QUICK</div>
-                <div className="text-lg font-black tracking-tighter bg-gradient-to-r from-accent-pink to-accent-purple bg-clip-text text-transparent">RETURN</div>
-              </div>
-              <div>
-                <p className="text-[11px] font-semibold text-white">Quick Return</p>
+              <div className="p-3.5 flex flex-col gap-1 relative z-10">
+                <h4 className="text-[13px] font-bold text-white">Quick Return</h4>
                 <p className="text-[9px] text-dark-muted">Returns in 1 Hours</p>
                 <p className="text-[9px] text-dark-muted">• 4 Plans available</p>
               </div>
             </div>
+           </Link>
+
           </div>
         </div>
 
-        {/* --- Why Choose Us --- */}
+        {/* --- Why Choose Us (Premium Horizontal List) --- */}
         <div className="mt-1 shrink-0">
           <h3 className="text-sm font-bold mb-3 text-center">Why Choose Us</h3>
-          <div className="grid grid-cols-3 gap-3">
+          <div className="flex flex-col gap-3">
             {[
-              { icon: <FaBolt />, title: 'Lightning Fast', desc: 'Instant Payouts', color: 'text-accent-purple' },
-              { icon: <FaLock />, title: 'Secure', desc: '100% Encrypted', color: 'text-accent-pink' },
-              { icon: <FaCrown />, title: 'Premium', desc: 'Best Rewards', color: 'text-accent-gold' },
+              { icon: <FaBolt />, title: 'Lightning Fast', desc: 'Instant Payouts', color: 'accent-purple' },
+              { icon: <FaLock />, title: 'Secure', desc: '100% Encrypted', color: 'accent-pink' },
+              { icon: <FaCrown />, title: 'Premium', desc: 'Best Rewards', color: 'accent-gold' },
             ].map((item, i) => (
-              <div key={i} className="bg-dark-600 border border-border-glass rounded-xl p-4 flex flex-col items-center text-center gap-1.5 hover:bg-accent-purple/10 transition-colors">
-                <div className={`text-xl ${item.color} drop-shadow-accent-purple/30`}>{item.icon}</div>
-                <p className="text-[11px] font-semibold text-white">{item.title}</p>
-                <p className="text-[9px] text-dark-muted">{item.desc}</p>
+              <div
+                key={i}
+                className={`bg-dark-600 border-l-4 border-${item.color} rounded-xl p-4 flex items-center gap-4 hover:bg-dark-700 hover:-translate-x-0.5 transition-all duration-300 cursor-pointer group`}
+              >
+                <div className={`w-10 h-10 rounded-full bg-${item.color}/10 flex items-center justify-center text-${item.color} group-hover:scale-110 transition-transform duration-300`}>
+                  {item.icon}
+                </div>
+                <div className="flex flex-col">
+                  <p className="text-sm font-bold text-white tracking-tight">{item.title}</p>
+                  <p className="text-[10px] text-dark-muted font-medium leading-tight">{item.desc}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -132,31 +184,39 @@ const Dashboard = () => {
           </div>
         </div>
 
-        {/* --- Hot Moments --- */}
+        {/* --- Hot Moments (Fancy Feed Design) --- */}
         <div className="shrink-0">
-          <div className="flex items-center gap-2 mb-3">
-            <FaFire className="text-orange-500 text-sm" />
-            <h3 className="text-sm font-bold">Hot Moments</h3>
-          </div>
-          <div className="bg-dark-600 border border-border-glass rounded-2xl overflow-hidden">
-            <div className="grid grid-cols-[auto_1fr_auto_auto] gap-x-3 gap-y-0 text-[10px] p-3 border-b border-accent-purple/10 font-medium text-dark-muted">
-              <span>#</span><span>Player</span><span>Amount</span><span>Time</span>
+          <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center gap-2">
+              <FaFire className="text-orange-500 text-sm" />
+              <h3 className="text-sm font-bold">Hot Moments</h3>
             </div>
-            <div className="flex flex-col">
-              {hotMoments.map((item, index) => (
-                <div key={index} className="grid grid-cols-[auto_1fr_auto_auto] gap-x-3 gap-y-0 items-center p-3 border-b border-white/5 last:border-0 hover:bg-accent-purple/5 transition-colors">
-                  <span className="text-dark-muted text-[10px] w-4 text-center">{item.rank}</span>
-                  <div className="flex items-center gap-2">
-                    <div className="w-6 h-6 rounded-full bg-gradient-to-r from-accent-purple to-accent-pink flex items-center justify-center text-[9px] font-semibold text-white">
+            <span className="text-[9px] text-accent-cyan flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 bg-accent-cyan rounded-full animate-pulse"></span> Live
+            </span>
+          </div>
+          <div className="bg-dark-600 border border-border-glass rounded-2xl overflow-hidden divide-y divide-border-glass/50">
+            {hotMoments.map((item, index) => (
+              <div key={index} className="flex items-center justify-between p-4 px-5 hover:bg-accent-purple/5 transition-colors group">
+                <div className="flex items-center gap-4">
+                  {/* Rank with special gold glow for #1 */}
+                  <div className={`w-6 h-6 rounded-full flex items-center justify-center text-[9px] font-bold shrink-0 ${item.rank === 1 ? 'bg-accent-gold/20 text-accent-gold border border-accent-gold/30' : 'bg-dark-700 text-dark-muted'}`}>
+                    {item.rank}
+                  </div>
+                  <div className="relative">
+                    <div className="w-9 h-9 rounded-full bg-gradient-to-r from-accent-purple to-accent-pink flex items-center justify-center text-[10px] font-bold text-white shadow-sm shadow-accent-purple/20">
                       {item.avatar}
                     </div>
-                    <span className="text-white text-[11px] font-medium">{item.name}</span>
+                    <span className="absolute -bottom-1 -right-1 w-3 h-3 bg-green-400 rounded-full border-2 border-dark-600"></span>
                   </div>
-                  <span className="text-accent-pink text-[11px] font-semibold">{item.amount}</span>
-                  <span className="text-dark-muted text-[9px]">{item.time}</span>
+                  <div className="flex flex-col">
+                    <span className="text-sm font-semibold text-white">{item.name}</span>
+                    <span className="text-[10px] text-dark-muted">{item.time}</span>
+                  </div>
                 </div>
-              ))}
-            </div>
+                <span className="text-accent-pink font-bold text-sm group-hover:scale-105 transition-transform">{item.amount}</span>
+              </div>
+            ))}
           </div>
         </div>
 
